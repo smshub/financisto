@@ -1,0 +1,14 @@
+bin
+gen
+classes
+Financisto.eml
+Financisto.ipr
+Financisto.iws
+.settings
+GreenDroid/GreenDroid.eml
+.idea/workspace.xml
+.idea/tasks.xml
+local.properties
+tests/coverage.em
+tests/coverage
+robotium_tests/local.properties
