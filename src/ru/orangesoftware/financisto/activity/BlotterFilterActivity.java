@@ -7,33 +7,34 @@
  * 
  * Contributors:
  *     Denis Solonenko - initial API and implementation
+ *     fix_it
  ******************************************************************************/
 package ru.orangesoftware.financisto.activity;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.*;
+import ru.orangesoftware.financisto.R;
+import ru.orangesoftware.financisto.blotter.BlotterFilter;
+import ru.orangesoftware.financisto.datetime.DateUtils;
+import ru.orangesoftware.financisto.datetime.Period;
+import ru.orangesoftware.financisto.db.DatabaseHelper.CategoryViewColumns;
+import ru.orangesoftware.financisto.filter.Criteria;
+import ru.orangesoftware.financisto.filter.DateTimeCriteria;
+import ru.orangesoftware.financisto.filter.SingleCategoryCriteria;
+import ru.orangesoftware.financisto.filter.WhereFilter;
+import ru.orangesoftware.financisto.model.*;
+import ru.orangesoftware.financisto.utils.EnumUtils;
+import ru.orangesoftware.financisto.utils.TransactionUtils;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import android.widget.*;
-import ru.orangesoftware.financisto.R;
-import ru.orangesoftware.financisto.blotter.BlotterFilter;
-import ru.orangesoftware.financisto.filter.SingleCategoryCriteria;
-import ru.orangesoftware.financisto.filter.WhereFilter;
-import ru.orangesoftware.financisto.filter.Criteria;
-import ru.orangesoftware.financisto.filter.DateTimeCriteria;
-import ru.orangesoftware.financisto.db.DatabaseHelper.CategoryViewColumns;
-import ru.orangesoftware.financisto.model.*;
-import ru.orangesoftware.financisto.datetime.DateUtils;
-import ru.orangesoftware.financisto.utils.EnumUtils;
-import ru.orangesoftware.financisto.utils.TransactionUtils;
-import ru.orangesoftware.financisto.datetime.Period;
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
 
 
 public class BlotterFilterActivity extends AbstractActivity {	
@@ -59,6 +60,7 @@ public class BlotterFilterActivity extends AbstractActivity {
     private String filterValueNotFound;
     private long accountId;
     private boolean isAccountFilter;
+
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
