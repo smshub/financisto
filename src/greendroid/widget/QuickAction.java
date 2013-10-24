@@ -33,6 +33,8 @@ public class QuickAction {
     //123
     // :)
     // My name is Roman
+    //Hello guys
+
     public Drawable mDrawable;
     public CharSequence mTitle;
 
