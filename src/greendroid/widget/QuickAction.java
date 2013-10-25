@@ -34,7 +34,7 @@ public class QuickAction {
     // :)
     // My name is Roman
     //Hello guys!!
-
+    //Kotov
     public Drawable mDrawable;
     public CharSequence mTitle;
 
