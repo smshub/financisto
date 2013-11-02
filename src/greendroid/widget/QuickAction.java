@@ -32,7 +32,7 @@ public class QuickAction {
 
     //123
     // :)
-    // My name is Roman
+    // Hey!
     //Hello guys!!
     //Kotov
     public Drawable mDrawable;
