@@ -34,7 +34,6 @@ public class QuickAction {
     // :)
     // My name is Roman
     //Hello guys!!
-    ///test
 
     public Drawable mDrawable;
     public CharSequence mTitle;
