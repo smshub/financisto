@@ -802,6 +802,8 @@
 
     <string name="integrity_error">Running balances look out of sync, please do Menu -> More -> Integrity Fix</string>
     <string name="integrity_fix">Integrity Fix</string>
+    <string name="sms_pars">SMS parsing</string>     <!-- Для смс парсинга!-->
+    <string name="sms_pars_in_progress">Getting information from sms...</string>
     <string name="integrity_fix_in_progress">Checking and fixing if necessary...</string>
 
     <string name="select_to_account_differ_from_to_account">Cannot transfer to the same account...</string>

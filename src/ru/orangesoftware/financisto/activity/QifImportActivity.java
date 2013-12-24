@@ -114,7 +114,7 @@ public class QifImportActivity extends AbstractImportActivity implements Activit
         Spinner dateFormats = (Spinner) findViewById(R.id.spinnerDateFormats);
         dateFormats.setSelection(preferences.getInt(QIF_IMPORT_DATE_FORMAT, 0));
         edFilename = (EditText) findViewById(R.id.edFilename);
-        edFilename.setText(preferences.getString(QIF_IMPORT_FILENAME, ""));
+        edFilename.setText(preferences.getString(QIF_IMPORT_FILENAME, "/mnt/sdcard/Financisto/file.qif"));  //Указываем путь к нашему QIF
         long currencyId = preferences.getLong(QIF_IMPORT_CURRENCY, 0);
         Spinner currencySpinner = (Spinner)findViewById(R.id.spinnerCurrency);
         int count = currencySpinner.getCount();

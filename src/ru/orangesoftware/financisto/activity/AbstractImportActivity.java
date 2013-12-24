@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import ru.orangesoftware.financisto.R;
 import ru.orangesoftware.financisto.utils.PinProtection;
@@ -46,11 +47,11 @@ public abstract class AbstractImportActivity extends Activity {
             }
         });
         edFilename = (EditText) findViewById(R.id.edFilename);
-
         internalOnCreate();
     }
 
     protected void openFile() {
+
         String filePath = edFilename.getText().toString();
 
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -87,7 +88,6 @@ public abstract class AbstractImportActivity extends Activity {
                 }
             }
         }
-
     }
 
     @Override

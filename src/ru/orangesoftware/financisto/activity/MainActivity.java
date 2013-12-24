@@ -41,6 +41,7 @@ import ru.orangesoftware.financisto.backup.Backup;
 import ru.orangesoftware.financisto.backup.SettingsNotConfiguredException;
 import ru.orangesoftware.financisto.db.DatabaseAdapter;
 import ru.orangesoftware.financisto.db.DatabaseHelper;
+import ru.orangesoftware.financisto.db.DatabaseHelperSMSHub;
 import ru.orangesoftware.financisto.dialog.WebViewDialog;
 import ru.orangesoftware.financisto.export.BackupExportTask;
 import ru.orangesoftware.financisto.export.BackupImportTask;
@@ -91,6 +92,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
     private static final int MENU_INTEGRITY_FIX = Menu.FIRST+13;
     private static final int MENU_PLANNER = Menu.FIRST+14;
     private static final int MENU_CLOUD_SYNC = Menu.FIRST+15;
+    private static final int MENU_SMS_PARS = Menu.FIRST+16; //Пункт меню для работы с смс
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -272,6 +274,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
         menu.addSubMenu(0, MENU_INTEGRITY_FIX, 0, R.string.integrity_fix);
         menu.addSubMenu(0, MENU_DONATE, 0, R.string.donate);
 		menu.addSubMenu(0, MENU_ABOUT, 0, R.string.about);
+        menu.addSubMenu(0, MENU_SMS_PARS, 0, R.string.sms_pars); //смс
 		return true;
 	}
 
@@ -337,6 +340,9 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
         case MENU_CLOUD_SYNC:
             doFlowzrSync();
             break;
+        case MENU_SMS_PARS:
+            doSMSPars();
+            break;
         }
 		return false;
 	}
@@ -348,6 +354,10 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
 	
     private void doIntegrityFix() {
         new IntegrityFixTask().execute();
+    }
+
+    private void doSMSPars() {
+        new SMSParsTask().execute();
     }
 
     private void openBrowser(String url) {
@@ -682,6 +692,34 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
         protected Object doInBackground(Object... objects) {
             DatabaseAdapter db = new DatabaseAdapter(MainActivity.this);
             new IntegrityFix(db).fix();
+            return null;
+        }
+    }
+
+    private class SMSParsTask extends AsyncTask {
+
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog = ProgressDialog.show(MainActivity.this, null, getString(R.string.sms_pars_in_progress), true);
+            progressDialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            refreshCurrentTab();
+            progressDialog.dismiss();
+        }
+
+        @Override
+        protected Object doInBackground(Object... objects) {
+            //Log.d("MyApp","I am here");
+            DatabaseHelperSMSHub dbSMS = new DatabaseHelperSMSHub (MainActivity.this);
+            Toast.makeText(getApplicationContext(), "Smshub ds", Toast.LENGTH_LONG).show();
+           // dbSMS.checkDataBase();
+           // dbSMS.openDataBase();
+
             return null;
         }
     }
