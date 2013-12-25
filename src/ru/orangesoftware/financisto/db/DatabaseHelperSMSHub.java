@@ -1,11 +1,11 @@
 package ru.orangesoftware.financisto.db;
 
+
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -66,10 +66,9 @@ public class DatabaseHelperSMSHub extends SQLiteOpenHelper {
      * Check if the database already exist to avoid re-copying the file each time you open the application.
      * @return true if it exists, false if it doesn't
      */
-    public boolean checkDataBase(){
+    private boolean checkDataBase(){
 
         SQLiteDatabase checkDB = null;
-
 
         try{
             String myPath = DB_PATH + DB_NAME;

@@ -41,7 +41,6 @@ import ru.orangesoftware.financisto.backup.Backup;
 import ru.orangesoftware.financisto.backup.SettingsNotConfiguredException;
 import ru.orangesoftware.financisto.db.DatabaseAdapter;
 import ru.orangesoftware.financisto.db.DatabaseHelper;
-import ru.orangesoftware.financisto.db.DatabaseHelperSMSHub;
 import ru.orangesoftware.financisto.dialog.WebViewDialog;
 import ru.orangesoftware.financisto.export.BackupExportTask;
 import ru.orangesoftware.financisto.export.BackupImportTask;
@@ -357,7 +356,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
     }
 
     private void doSMSPars() {
-        new SMSParsTask().execute();
+        doQifImport();
     }
 
     private void openBrowser(String url) {
@@ -695,33 +694,4 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
             return null;
         }
     }
-
-    private class SMSParsTask extends AsyncTask {
-
-        ProgressDialog progressDialog;
-
-        @Override
-        protected void onPreExecute() {
-            progressDialog = ProgressDialog.show(MainActivity.this, null, getString(R.string.sms_pars_in_progress), true);
-            progressDialog.show();
-        }
-
-        @Override
-        protected void onPostExecute(Object o) {
-            refreshCurrentTab();
-            progressDialog.dismiss();
-        }
-
-        @Override
-        protected Object doInBackground(Object... objects) {
-            //Log.d("MyApp","I am here");
-            DatabaseHelperSMSHub dbSMS = new DatabaseHelperSMSHub (MainActivity.this);
-            Toast.makeText(getApplicationContext(), "Smshub ds", Toast.LENGTH_LONG).show();
-           // dbSMS.checkDataBase();
-           // dbSMS.openDataBase();
-
-            return null;
-        }
-    }
-
 }
